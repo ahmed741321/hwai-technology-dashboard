@@ -1,0 +1,53 @@
+<%- include('base',{page_name: 'user_add'}) %>
+<div style="width: 100%;overflow-x: auto;padding: 2px">
+    <form class="mx-0 row gx-3 gy-4 mt-3" method="post" action="/user">
+        <div class="col-md-6">
+            <label for="inputfirstName4" class="form-label">First Name:</label>
+            <input placeholder="First Name..." type="text" name="firstName" class="form-control" id="inputfirstName4" />
+        </div>
+        <div class="col-md-6">
+            <label for="inputlastName4" class="form-label">Last Name:</label>
+            <input placeholder="Last Name..." type="text" name="lastName" class="form-control" id="inputlastName4" />
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputemail4" class="form-label">Email:</label>
+            <input placeholder="email@gmail.com" type="email" name="email" class="form-control" id="inputemail4" />
+        </div>
+        <div class="col-md-6">
+            <label for="inputtele4" class="form-label">Telephone:</label>
+            <input placeholder="Telephone..." type="text" name="phone" class="form-control" id="inputtele4" />
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputage4" class="form-label">Age:</label>
+            <input placeholder="Your Age:..." type="number" name="Age" class="form-control" id="inputage4" />
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputCountry" class="form-label">Country:</label>
+            <select id="inputCountry" name="Country" class="form-select">
+                <option selected hidden disabled value="null">Choose here ...</option>
+
+                <option>Morocco</option>
+                <option>Egypt</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputGender" class="form-label">Gender:</label>
+            <select id="inputGender" name="Gender" class="form-select">
+                <option selected hidden disabled>Choose here ...</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+    </table>
+</div>
+<!-- Include footer -->
+<%- include('components/footer') %>

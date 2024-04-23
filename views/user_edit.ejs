@@ -1,0 +1,104 @@
+<%- include('base',{page_name: 'user_add'}) %>
+<div style="width: 100%;overflow-x: auto;padding: 2px">
+    <form class="mx-0 row gx-3 gy-4 mt-3" id="update_form" method="POST"
+        action="/user/update/<%= user._id %>?_method=PUT">
+        <div class="col-md-6">
+            <label for="inputUser_id" class="form-label">User id:</label>
+            <input placeholder="User id" type="text" name="userId" value="<%= user._id %>" class="form-control"
+                id="inputUser_id" />
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputfirstName" class="form-label">First Name:</label>
+            <input placeholder="First Name..." type="text" name="firstName" class="form-control" id="inputfirstName"
+                value="<%= user.firstName %>" />
+        </div>
+        <div class="col-md-6">
+            <label for="inputlastName" class="form-label">Last Name:</label>
+            <input placeholder="Last Name..." type="text" name="lastName" class="form-control" id="inputlastName"
+                value="<%= user.lastName %>" />
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputemail" class="form-label">Email:</label>
+            <input placeholder="email@gmail.com" type="email" name="email" class="form-control" id="inputemail"
+                value="<%= user.email %>" />
+        </div>
+        <div class="col-md-6">
+            <label for="inputtele" class="form-label">Telephone:</label>
+            <input placeholder="Telephone..." type="text" name="phone" class="form-control" id="inputtele"
+                value="<%= user.phone %>" />
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputage" class="form-label">Age:</label>
+            <input placeholder="Your Age:..." type="number" name="Age" class="form-control" id="inputage"
+                value="<%= user.Age %>" />
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputCountry" class="form-label">Country:</label>
+            <select id="inputCountry" name="Country" class="form-select">
+                <option selected hidden value="null">Choose here ...</option>
+                <option <%= user.Country === 'Morocco' ? 'selected' : '' %> value="Morocco">Morocco</option>
+                <option <%= user.Country === 'Egypt' ? 'selected' : '' %> value="Egypt">Egypt</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputGender" class="form-label">Gender:</label>
+            <select id="inputGender" name="Gender" class="form-select">
+                <option selected hidden>Choose here ...</option>
+                <option <%= user.Gender === 'Male' ? 'selected' : '' %> value="Male">Male</option>
+                <option <%= user.Gender === 'Female' ? 'selected' : '' %> value="Female">Female</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="createdAt" class="form-label">created At:</label>
+            <input placeholder="Created At:.." type="text" name="createdAt"
+                value="<%= moment( user.createdAt).fromNow() %>" class="form-control" id="createdAt" />
+        </div>
+        <div class="col-md-6">
+            <label for="updatedAt" class="form-label">updated At:</label>
+            <input placeholder="Updated At:..." type="text" name="updatedAt"
+                value="<%= moment(user.updatedAt).fromNow() %>" class="form-control" id="updatedAt" />
+        </div>
+
+        <div class="col-6">
+            <button type="button" onclick="deleteUser('<%= user._id %>')" class="btn btn-danger col-12">Delete</button>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary col-12">Update</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function deleteUser(userId) {
+        if (confirm("Are you sure you want to delete this user?")) {
+            fetch(`/user/${userId}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Handle success response
+                    alert("Deleted successfully");
+                    // Reload the page or update the UI as needed
+                    window.location = "/";
+                })
+                .catch(error => {
+                    // Handle error
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+    }
+</script>
+
+<!-- Include footer -->
+<%- include('components/footer') %>
