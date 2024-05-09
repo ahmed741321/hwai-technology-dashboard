@@ -2,7 +2,7 @@
 <div style="width: 100%;overflow-x: auto;padding: 2px">
     <form class="mx-0 row gx-3 gy-4 mt-3" id="update_form" method="POST"
         action="/user/update/<%= user._id %>?_method=PUT">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <label for="inputUser_id" class="form-label">User id:</label>
             <input placeholder="User id" type="text" name="userId" value="<%= user._id %>" class="form-control"
                 id="inputUser_id" />
@@ -37,6 +37,12 @@
         </div>
 
         <div class="col-md-6">
+            <label for="inputage5" class="form-label">Password:</label>
+            <input placeholder="Your Password:..." type="password" name="Password" class="form-control" id="inputage5"
+                value="<%= user.Password %>" />
+        </div>
+
+        <div class="col-md-6">
             <label for="inputCountry" class="form-label">Country:</label>
             <select id="inputCountry" name="Country" class="form-select">
                 <option selected hidden value="null">Choose here ...</option>
@@ -66,12 +72,15 @@
         </div>
 
         <div class="col-6">
-            <button type="button" onclick="deleteUser('<%= user._id %>')" class="btn btn-danger col-12">Delete</button>
+            <button type="button" onclick="deleteUser('<%= user._id %>')"
+                class="btn btn-danger col-12 form-label">Delete</button>
         </div>
         <div class="col-6">
-            <button type="submit" class="btn btn-primary col-12">Update</button>
+            <button type="submit" class="btn btn-primary col-12 form-label">Update</button>
         </div>
+
     </form>
+
 </div>
 
 <script>
@@ -90,7 +99,7 @@
                     // Handle success response
                     alert("Deleted successfully");
                     // Reload the page or update the UI as needed
-                    window.location = "/";
+                    window.location = "/user";
                 })
                 .catch(error => {
                     // Handle error

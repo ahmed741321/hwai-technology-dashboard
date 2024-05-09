@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HWAI Technology</title>
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f7f6f6;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body class="text-center">
+    <main class="form-signin">
+        <form method="post" action="/login">
+            <img class="mb-4" src="/img/logo.png" alt="logo" width="70px" height="auto">
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <% if (message && message.length > 0) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= message %>
+            </div>
+            <% } %>
+
+            <div class="form-floating mb-2">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="password" class="form-control" name="password" id="floatingPassword"
+                    placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+    
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <p class="mt-5 mb-3 text-muted">HWAI Technology &copy; 2024</p>
+        </form>
+    </main>
+</body>
+
+</html>

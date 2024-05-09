@@ -11,6 +11,7 @@ const userSchema = new Schema(
     Age: Number,
     Country: String,
     Gender: String,
+    Password: String,
   },
   { timestamps: true, get: (time) => time.toDateString() }
 );

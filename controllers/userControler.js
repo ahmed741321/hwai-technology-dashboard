@@ -43,7 +43,7 @@ var add_new_user = async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
-    res.redirect("/");
+    res.redirect("/user");
   } catch (error) {
     console.error("Error saving user:", error);
     res.status(500).send(error.message);
@@ -102,7 +102,7 @@ var update_user = async (req, res) => {
     if (!updatedUser) {
       return res.status(404).json({ error: "User not found" });
     }
-    res.status(200).redirect("/");
+    res.status(200).redirect("/user");
   } catch (error) {
     console.error("Error updating user:", error);
     res.status(500).json({ error: error.message });
