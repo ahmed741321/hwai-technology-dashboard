@@ -55,9 +55,38 @@ var verify = async (req, res) => {
 
         const token = tokenClass.generateToken({ userId: user._id });
         req.app.locals.appToken = token;
-        res.status(200).json({ message: "login successfully", status: true });
+        res.status(200).json({ message: "login successfully", status: true, token: token });
 
     } catch (error) {
+        res.status(500).json({ error: error.message, status: false });
+    }
+};
+
+
+var verify_token = async (req, res) => {
+    try {
+        const token = req.query.token; // استقبال التوكن من الطلب
+
+        if (!token) {
+            return res.status(400).json({ error: 'Please provide a token', status: false });
+        }
+
+        // تحقق من صحة التوكن باستخدام الدالة verifyToken
+        const tokenData = verifyToken(token);
+
+        if (tokenData.valid) {
+            // في حالة أن التوكن صالح، يمكنك تنفيذ الإجراءات المطلوبة هنا
+            // على سبيل المثال، قد ترغب في تخزين معرف المستخدم أو أي بيانات إضافية من التوكن
+            const userId = tokenData.userId;
+
+            // يمكنك إرسال رد ناجح بمعرف المستخدم أو أي بيانات أخرى تحتاجها في التطبيق
+            res.status(200).json({ message: "Token is valid", status: true, userId: userId });
+        } else {
+            // في حالة أن التوكن غير صالح، يمكنك إرسال رد برسالة الخطأ
+            res.status(401).json({ error: 'Invalid token', status: false });
+        }
+    } catch (error) {
+        // إرسال رد الخطأ في حالة وجود أي خطأ آخر
         res.status(500).json({ error: error.message, status: false });
     }
 };
@@ -65,5 +94,6 @@ var verify = async (req, res) => {
 module.exports = {
     home_page,
     login,
-    verify
+    verify,
+    verify_token
 };
