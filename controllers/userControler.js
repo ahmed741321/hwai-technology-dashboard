@@ -1,6 +1,5 @@
 const User = require("../models/users");
 var moment = require("moment");
-const axios = require('axios');
 
 var home_page = async (req, res) => {
   try {
@@ -94,33 +93,16 @@ var delete_user = async (req, res) => {
   }
 };
 
-
 var update_user = async (req, res) => {
   try {
     const userId = req.params.userId;
-    const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).send("User not found");
+    const updatedUser = await User.findByIdAndUpdate(userId, req.body, {
+      new: true,
+    });
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
     }
-
-    // جمع البيانات التي تحتاج لإرسالها إلى الرابط الخاص بك في PHP
-    const data = {
-      Username: user.Username, // يجب استبدال user.username بالمتغير الذي يحتوي على اسم المستخدم
-      UserPassword: user.Password // يجب استبدال user.password بالمتغير الذي يحتوي على كلمة المرور
-    };
-
-    // إرسال البيانات إلى الرابط الخاص بك في PHP باستخدام axios
-    const response = await axios.post('http://api.hwai.com/Api/User/Update', data);
-
-    // التحقق من الرد من الرابط في PHP
-    if (response.data.Status) {
-      console.log("Update successful");
-      // يمكنك إضافة رمز إعادة توجيه هنا حسب الحاجة
-      res.status(200).redirect("/user");
-    } else {
-      console.log("Update failed");
-      res.status(500).json({ error: "Update failed" });
-    }
+    res.status(200).redirect("/user");
   } catch (error) {
     console.error("Error updating user:", error);
     res.status(500).json({ error: error.message });
