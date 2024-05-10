@@ -24,8 +24,9 @@ configureLivereload(app);
 // Connect to MongoDB using the function imported from database.js
 connectToDatabase(app);
 
-app.use(cors());
-
+app.use(cors({
+    origin: 'http://resturant.com'
+}));
 // تهيئة جلسات Express
 app.use(session({
     secret: 'Hwai Technology',
