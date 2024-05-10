@@ -96,12 +96,27 @@ var delete_user = async (req, res) => {
 var update_user = async (req, res) => {
   try {
     const userId = req.params.userId;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // إرسال البيانات إلى الرابط الخاص بك في PHP باستخدام axios
+    const response = await axios.get('http://api.hwai.com/Api/User/Update/' + user.Username + "/" + user.Password + "/" + req.body.Username + "/" + req.body.Username);
+    if (!response.Status) {
+      res.status(500).json({ error: "error.message" });
+
+    }
+
     const updatedUser = await User.findByIdAndUpdate(userId, req.body, {
       new: true,
     });
+
     if (!updatedUser) {
       return res.status(404).json({ error: "User not found" });
     }
+
     res.status(200).redirect("/user");
   } catch (error) {
     console.error("Error updating user:", error);
