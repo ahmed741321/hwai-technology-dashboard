@@ -103,12 +103,12 @@ var update_user = async (req, res) => {
       return res.status(404).send("User not found");
     }
 
-    // إرسال البيانات إلى الرابط الخاص بك في PHP باستخدام axios
-    const response = await axios.get('http://api.hwai.com/Api/User/Update/' + user.Username + "/" + user.Password + "/" + req.body.Username + "/" + req.body.Username);
-    if (!response.Status) {
-      res.status(500).json({ error: "error.message" });
+    // // إرسال البيانات إلى الرابط الخاص بك في PHP باستخدام axios
+    // const response = await axios.get('http://api.hwai.com/Api/User/Update/' + user.Username + "/" + user.Password + "/" + req.body.Username + "/" + req.body.Username);
+    // if (!response.Status) {
+    //   res.status(500).json({ error: "error.message" });
 
-    }
+    // }
 
     const updatedUser = await User.findByIdAndUpdate(userId, req.body, {
       new: true,
