@@ -6,6 +6,6 @@ const mainController = require("../controllers/mainController");
 router.get("/", mainController.home_page);
 router.post("/login", mainController.login);
 router.get("/verify", mainController.verify);
-router.get("/verify-token", mainController.verify);
+router.get("/verify-token", mainController.verify_token);
 
 module.exports = router;
