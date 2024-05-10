@@ -119,11 +119,11 @@ var update_user = async (req, res) => {
       res.status(200).redirect("/user");
     } else {
       console.log("Update failed");
-      res.redirect("/user");
+      res.redirect("/");
     }
   } catch (error) {
     console.error("Error updating user:", error);
-    res.redirect("/user");
+    res.redirect("/");
   }
 };
 
