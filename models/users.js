@@ -12,6 +12,8 @@ const userSchema = new Schema(
     Country: String,
     Gender: String,
     Password: String,
+    Username: String,
+    Status: String
   },
   { timestamps: true, get: (time) => time.toDateString() }
 );

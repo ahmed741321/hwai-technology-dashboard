@@ -42,13 +42,13 @@ var login = async (req, res) => {
 
 var verify = async (req, res) => {
     try {
-        const id = req.query.id;
+        const username = req.query.username;
         const password = req.query.password;
-        if (!id || !password) {
+        if (!username || !password) {
             return res.status(400).json({ error: 'Please enter email and password', status: false });
         }
 
-        const user = await User.findOne({ _id: id, Password: password });
+        const user = await User.findOne({ Username: username, Password: password });
         if (!user) {
             return res.status(401).json({ error: 'Invalid email or password', status: false });
         }
