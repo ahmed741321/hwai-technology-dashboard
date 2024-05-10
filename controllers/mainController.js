@@ -95,5 +95,5 @@ module.exports = {
     home_page,
     login,
     verify,
-    verify_token
+    verify_token,
 };
