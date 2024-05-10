@@ -35,7 +35,10 @@
             <input placeholder="Your Age:..." type="number" name="Age" class="form-control" id="inputage"
                 value="<%= user.Age %>" />
         </div>
-
+        <div class="col-md-6">
+            <label for="inputage7" class="form-label">Username:</label>
+            <input placeholder="Your Username:..." value="<%= user.Username %>" type="text" name="Username" class="form-control" id="inputage7" />
+        </div>
         <div class="col-md-6">
             <label for="inputage5" class="form-label">Password:</label>
             <input placeholder="Your Password:..." type="password" name="Password" class="form-control" id="inputage5"
@@ -59,7 +62,14 @@
                 <option <%= user.Gender === 'Female' ? 'selected' : '' %> value="Female">Female</option>
             </select>
         </div>
-
+        <div class="col-md-6">
+            <label for="inputStatus" class="form-label">Status:</label>
+            <select id="inputStatus" name="Status" class="form-select">
+                <option selected hidden>Choose here ...</option>
+                <option <%= user.Gender === 'Active' ? 'selected' : '' %> value="Active">Active</option>
+                <option <%= user.Gender === 'inactive' ? 'selected' : '' %> value="inactive">inactive</option>
+            </select>
+        </div>
         <div class="col-md-6">
             <label for="createdAt" class="form-label">created At:</label>
             <input placeholder="Created At:.." type="text" name="createdAt"

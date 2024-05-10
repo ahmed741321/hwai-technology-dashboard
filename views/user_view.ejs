@@ -23,11 +23,20 @@
                 class="form-control" id="inputemail4" disabled />
         </div>
         <div class="col-md-6">
-            <label for="inputtele4" class="form-label">Telephone:</label>
-            <input placeholder="Telephone..." type="text" name="phone" value="<%= user.phone %>" class="form-control"
+            <label for="inputage7" class="form-label">Username:</label>
+            <input disabled placeholder="Your Username:..." value="<%= user.Username %>" type="text" name="Username"
+                class="form-control" id="inputage7" />
+        </div>
+        <div class="col-md-6">
+            <label for="inputtele4" class="form-label">phone:</label>
+            <input placeholder="phone..." type="text" name="phone" value="<%= user.phone %>" class="form-control"
                 id="inputtele4" disabled />
         </div>
-
+        <div class="col-md-6">
+            <label for="inputage5" class="form-label">Password:</label>
+            <input placeholder="Your Password:..." type="text" name="Password" class="form-control" id="inputage5"
+                value="<%= user.Password %>" disabled />
+        </div>
         <div class="col-md-6">
             <label for="inputage4" class="form-label">Age:</label>
             <input placeholder="Your Age:..." type="number" name="Age" value="<%= user.Age %>" class="form-control"
@@ -51,6 +60,15 @@
                 <option <%= user.Gender === 'Male' ? 'selected' : '' %>>Male</option>
                 <option <%= user.Gender === 'Female' ? 'selected' : '' %>>Female</option>
 
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputStatus" class="form-label">Status:</label>
+            <select id="inputStatus" name="Status" class="form-select" disabled>
+                <option selected hidden>Choose here ...</option>
+                <option <%= user.Gender === 'Active' ? 'selected' : '' %> value="Active">Active</option>
+                <option <%= user.Gender === 'inactive' ? 'selected' : '' %> value="inactive">inactive</option>
             </select>
         </div>
 
