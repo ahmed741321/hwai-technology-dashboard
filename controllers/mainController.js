@@ -72,7 +72,7 @@ var verify_token = async (req, res) => {
         }
 
         // تحقق من صحة التوكن باستخدام الدالة verifyToken
-        const tokenData = verifyToken(token);
+        const tokenData = tokenClass.verifyToken(token);
 
         if (tokenData.valid) {
             // في حالة أن التوكن صالح، يمكنك تنفيذ الإجراءات المطلوبة هنا
