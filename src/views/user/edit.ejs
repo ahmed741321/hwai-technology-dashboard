@@ -1,4 +1,4 @@
-<%- include('base',{page_name: 'user_add'}) %>
+<%- include('../components/base',{page_name: 'user_add'}) %>
 <div style="width: 100%;overflow-x: auto;padding: 2px">
     <form class="mx-0 row gx-3 gy-4 mt-3" id="update_form" method="POST"
         action="/user/update/<%= user._id %>?_method=PUT">
@@ -37,7 +37,8 @@
         </div>
         <div class="col-md-6">
             <label for="inputage7" class="form-label">Username:</label>
-            <input placeholder="Your Username:..." value="<%= user.Username %>" type="text" name="Username" class="form-control" id="inputage7" />
+            <input placeholder="Your Username:..." value="<%= user.Username %>" type="text" name="Username"
+                class="form-control" id="inputage7" />
         </div>
         <div class="col-md-6">
             <label for="inputage5" class="form-label">Password:</label>
@@ -90,6 +91,7 @@
         </div>
 
     </form>
+    <br>
 
 </div>
 
@@ -120,4 +122,4 @@
 </script>
 
 <!-- Include footer -->
-<%- include('components/footer') %>
+<%- include('../components/footer') %>

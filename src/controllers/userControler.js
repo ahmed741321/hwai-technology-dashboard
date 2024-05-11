@@ -5,14 +5,14 @@ var axios = require("axios");
 var home_page = async (req, res) => {
   try {
     const users = await User.find();
-    res.render("index", { users, moment: moment });
+    res.render("user/home", { users, moment: moment });
   } catch (error) {
     res.status(500).send(error.message);
   }
 };
 
 var user_add = (req, res) => {
-  res.render("user_add");
+  res.render("user/add", { moment: moment });
 };
 
 var view_user = async (req, res) => {
@@ -22,7 +22,7 @@ var view_user = async (req, res) => {
     if (!user) {
       return res.status(404).send("User not found");
     }
-    res.render("user_view", { user, moment: moment });
+    res.render("user/view", { user, moment: moment });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -34,7 +34,7 @@ var user_show_for_edit = async (req, res) => {
     if (!user) {
       return res.status(404).send("User not found");
     }
-    res.render("user_edit", { user, moment: moment });
+    res.render("user/edit", { user, moment: moment });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -73,7 +73,7 @@ var search = async (req, res) => {
     }
 
     // عرض النتائج باستخدام القالب الصحيح (search)
-    res.render("search", { users: searchResults, moment: moment });
+    res.render("user/search", { users: searchResults, moment: moment });
   } catch (error) {
     console.error("Error searching:", error); // سجل الخطأ للتحقق
     res.status(500).send("Error searching: " + error.message); // إرسال رسالة الخطأ مع تفاصيله

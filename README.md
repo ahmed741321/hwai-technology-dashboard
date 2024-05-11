@@ -1,1 +1,1 @@
-# hwai-technology-dashboard
+# dashboard

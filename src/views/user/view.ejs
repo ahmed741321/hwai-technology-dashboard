@@ -1,7 +1,7 @@
-<%- include('base',{page_name: 'user_add'}) %>
+<%- include('../components/base',{page_name: 'user_add'}) %>
 <div style="width: 100%;overflow-x: auto;padding: 2px">
     <form class="mx-0 row gx-3 gy-4 mt-3" method="post" action="/user">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <label for="inputUser_id" class="form-label">User id:</label>
             <input placeholder="User id" type="text" name="User_id" value="<%= user._id %>" class="form-control"
                 id="inputUser_id" disabled />
@@ -84,6 +84,7 @@
         </div>
     </form>
     </table>
+    <br>
 </div>
 <!-- Include footer -->
-<%- include('components/footer') %>
+<%- include('../components/footer') %>
